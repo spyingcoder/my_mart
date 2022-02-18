@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843418972082",
+    "project_id": "ecommerceappbyashu",
+    "storage_bucket": "ecommerceappbyashu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843418972082:android:076f9411aab98f3fcd7eab",
+        "android_client_info": {
+          "package_name": "com.example.my_mart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843418972082-7edngtkkho34b935oojvqcoogb5kmnjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHHS8DqK7xeS2BMAPuf9tWmBeKto0fk-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843418972082-7edngtkkho34b935oojvqcoogb5kmnjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animated_text_kit: ^4.2.1
 
   cupertino_icons: ^1.0.2
 
@@ -29,6 +30,11 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
 
+  fonts:
+    - family: SupermercadoOne
+      fonts:
+        - asset: assets/fonts/SupermercadoOne-Regular.ttf
+
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -40,4 +46,5 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
   #
