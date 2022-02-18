@@ -24,6 +24,7 @@ class Main extends StatelessWidget {
       },
       initialRoute: '/',
       theme: ThemeData(
+        fontFamily: 'SupermercadoOne',
         scaffoldBackgroundColor: Colors.blueGrey[900], //DARK MODE
         //scaffoldBackgroundColor: Colors.blueGrey[100],  //LIGHT MODE
       ),
