@@ -78,11 +78,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.arrow_forward_ios),
-          onPressed: () {
-            Navigator.pushNamed(context, '/signup');
-          }),
     );
   }
 }

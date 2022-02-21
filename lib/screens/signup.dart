@@ -44,33 +44,47 @@ class _SignUpState extends State<SignUp> {
     );
 
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          //
-          //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP------------------->>>>
-          //
-          AnimatedPositioned(
-            duration: const Duration(seconds: 5),
-            curve: Curves.fastOutSlowIn,
-            child: Center(
-              child: SizedBox(
-                width: dWidth * 0.80,
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    "Welcome to MyMart",
-                    style: colorizeTextStyle,
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            //CHILD AT THE TOP IN THIS HAS LOWEST PRIORITY
+            Container(
+              color: Colors.blueGrey[200],
+            ),
+            //
+            //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
+            //
+            Material(
+              elevation: 20,
+              child: Container(
+                color: Colors.blueGrey[900],
+                height: dHeight * 0.2,
+                width: dWidth,
+                child: AnimatedPositioned(
+                  duration: const Duration(seconds: 5),
+                  curve: Curves.fastOutSlowIn,
+                  child: Center(
+                    child: SizedBox(
+                      width: dWidth * 0.80,
+                      child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          "Welcome to MyMart",
+                          style: colorizeTextStyle,
+                        ),
+                      ),
+                    ),
                   ),
+                  top: selected ? dHeight * .08 : dHeight * .5,
+                  left: dWidth * 0.1,
                 ),
               ),
             ),
-            top: selected ? dHeight * .08 : dHeight * .5,
-            left: dWidth * 0.1,
-          ),
-          //
-          //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP------------------->>>>
-          //
-        ],
+            //
+            //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
+            //
+          ],
+        ),
       ),
     );
   }

@@ -27,6 +27,7 @@ class Main extends StatelessWidget {
         fontFamily: 'SupermercadoOne',
         scaffoldBackgroundColor: Colors.blueGrey[900], //DARK MODE
         //scaffoldBackgroundColor: Colors.blueGrey[100],  //LIGHT MODE
+        //
       ),
     );
   }
