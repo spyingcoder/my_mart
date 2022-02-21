@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:my_mart/shared/util.dart';
 
 class Home extends StatefulWidget {
@@ -16,10 +14,8 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // selected = true;
-    Timer(const Duration(seconds: 12), () {
-      Navigator.pop(context);
-      Navigator.pushNamed(context, '/signup');
+    setState(() {
+      selected = !selected;
     });
   }
 
@@ -28,53 +24,79 @@ class _HomeState extends State<Home> {
     double dWidth = MyUtility(context).width;
     double dHeight = MyUtility(context).height;
 
-    const colorizeColors = [
-      Colors.white,
-      Colors.brown,
-    ];
-
     var colorizeTextStyle = TextStyle(
       fontSize: dHeight * 0.07,
       fontFamily: 'SupermercadoOne',
       fontWeight: FontWeight.w700,
+      color: Colors.white,
     );
 
     return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: dWidth*0.80,
-          child: FittedBox(
-            fit: BoxFit.fitWidth,
-            child: AnimatedTextKit(
-              animatedTexts: [
-                ColorizeAnimatedText(
-                  'Affordable',
-                  textAlign: TextAlign.center,
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Stack(
+            //CHILD AT THE TOP IN THIS HAS LOWEST PRIORITY
+            children: <Widget>[
+              //This container will be the body of this page
+              Container(
+                color: Colors.blueGrey[200],
+                height: dHeight,
+                margin: EdgeInsets.only(top: dHeight * 0.2),
+                width: dWidth,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: dHeight * 0.05),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Username',
+                          hintStyle: const TextStyle(),
+                          border: const OutlineInputBorder(),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              FocusScope.of(context).unfocus();
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                ColorizeAnimatedText(
-                  'Attractive',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
+              ),
+              //
+              //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
+              //
+              Material(
+                elevation: 20,
+                //This container will act as an appbar
+                child: Container(
+                  color: Colors.blueGrey[900],
+                  height: dHeight * 0.2,
+                  width: dWidth,
+                  child: AnimatedPositioned(
+                    duration: const Duration(seconds: 5),
+                    curve: Curves.fastOutSlowIn,
+                    child: Center(
+                      child: SizedBox(
+                        width: dWidth * 0.80,
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            "Welcome to MyMart",
+                            style: colorizeTextStyle,
+                          ),
+                        ),
+                      ),
+                    ),
+                    top: selected ? dHeight * .08 : dHeight * .5,
+                    left: dWidth * 0.1,
+                  ),
                 ),
-                ColorizeAnimatedText(
-                  'Adorable',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-                ColorizeAnimatedText(
-                  'Welcome to MyMart',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-              ],
-              isRepeatingAnimation: false,
-              totalRepeatCount: 0,
-              onTap: () {
-                print("Tap Event");
-              },
-            ),
+              ),
+              //
+              //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
+              //
+            ],
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_mart/screens/home.dart';
+import 'package:my_mart/screens/intro_screen.dart';
 import 'package:my_mart/screens/login.dart';
-import 'package:my_mart/screens/signup.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(const Main());
@@ -18,8 +18,8 @@ class Main extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => Home(),
-        '/signup': (context) => const SignUp(),
+        '/': (context) => const Intro(),
+        '/Home': (context) => const Home(),
         '/login': (context) => const Login(),
       },
       initialRoute: '/',
