@@ -12,9 +12,9 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
@@ -27,7 +27,11 @@ class Main extends StatelessWidget {
         fontFamily: 'SupermercadoOne',
         scaffoldBackgroundColor: Colors.blueGrey[900], //DARK MODE
         //scaffoldBackgroundColor: Colors.blueGrey[100],  //LIGHT MODE
-        //
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blueGrey[900],
+          ),
+        ),
       ),
     );
   }
