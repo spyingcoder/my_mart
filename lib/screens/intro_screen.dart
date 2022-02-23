@@ -17,9 +17,9 @@ class _IntroState extends State<Intro> {
   void initState() {
     super.initState();
     // selected = true;
-    Timer(const Duration(seconds: 12), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.pop(context);
-      Navigator.pushNamed(context, '/Home');
+      Navigator.pushNamed(context, '/home');
     });
   }
 
@@ -41,38 +41,37 @@ class _IntroState extends State<Intro> {
 
     return Scaffold(
       body: Center(
-        child: SizedBox(
-          width: dWidth*0.80,
-          child: FittedBox(
-            fit: BoxFit.fitWidth,
-            child: AnimatedTextKit(
-              animatedTexts: [
-                ColorizeAnimatedText(
-                  'Affordable',
-                  textAlign: TextAlign.center,
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: dWidth * 0.80,
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    ColorizeAnimatedText(
+                      'Welcome to MyMart',
+                      textStyle: colorizeTextStyle,
+                      colors: colorizeColors,
+                    ),
+                  ],
+                  isRepeatingAnimation: false,
                 ),
-                ColorizeAnimatedText(
-                  'Attractive',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-                ColorizeAnimatedText(
-                  'Adorable',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-                ColorizeAnimatedText(
-                  'Welcome to MyMart',
-                  textStyle: colorizeTextStyle,
-                  colors: colorizeColors,
-                ),
-              ],
-              isRepeatingAnimation: false,
-              totalRepeatCount: 0,
+              ),
             ),
-          ),
+            SizedBox(
+              height: 25,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/images/appstore.png',
+                width: 80,
+                height: 80,
+              ),
+            ),
+          ],
         ),
       ),
     );

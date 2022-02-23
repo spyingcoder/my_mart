@@ -58,27 +58,45 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Stack(
-            //CHILD AT THE TOP IN THIS HAS LOWEST PRIORITY
-            children: <Widget>[
-              // This container will be the body of this page-------------->
-              Form(
+        child: Stack(
+          //CHILD AT THE TOP IN THIS HAS LOWEST PRIORITY
+          children: <Widget>[
+            // This container will be the body of this page-------------->
+            SingleChildScrollView(
+              child: Form(
                 key: _formKey,
+                //----------------CONTAINER FOR DECORATING FORM AREA------>
                 child: Container(
-                  color: Colors.blueGrey[200],
+                  color: Colors.white,
                   height: dHeight,
-                  margin: EdgeInsets.only(top: dHeight * 0.05),
+                  margin: EdgeInsets.only(top: dHeight * 0.1),
                   width: dWidth,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      //-------------------IT WILL TAKE THE USERNAME----<<<<<<<<
+                      //-------------------TEXT FOR REGISTER---------<<<<<<<<
                       Container(
                         width: formWidth,
                         height: formHeight,
                         margin: EdgeInsets.only(top: dHeight * 0.05),
+                        child: Center(
+                          child: Text(
+                            "Register Here",
+                            style: TextStyle(
+                              fontSize: dHeight * 0.05,
+                              fontWeight: FontWeight.w900,
+                              // color: Colors.blueGrey[800],
+                              fontFamily: 'BalooBhaijaan2',
+                            ),
+                          ),
+                        ),
+                      ),
+                      //-------------------IT WILL TAKE THE USERNAME----<<<<<<<<
+                      Container(
+                        width: formWidth,
+                        height: formHeight,
+                        margin: EdgeInsets.only(top: dHeight * 0.01),
                         child: TextFormField(
                           validator: (value) {
                             if (value == "") {
@@ -89,6 +107,7 @@ class _HomeState extends State<Home> {
                             return '';
                           },
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.person_sharp),
                             hintText: 'Username',
                             hintStyle: TextStyle(color: Colors.black),
                             border: OutlineInputBorder(),
@@ -110,13 +129,14 @@ class _HomeState extends State<Home> {
                             return "";
                           },
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.email_sharp),
                             hintText: 'Email',
                             hintStyle: TextStyle(color: Colors.black),
                             border: OutlineInputBorder(),
                           ),
                         ),
                       ),
-                      //-------------------IT WILL TAKE THE PASSWORD-----<<<<<<<<
+                      //------------------IT WILL TAKE THE PASSWORD-----<<<<<<<<
                       Container(
                         width: formWidth,
                         height: formHeight,
@@ -132,6 +152,7 @@ class _HomeState extends State<Home> {
                             return "";
                           },
                           decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.password_outlined),
                             hintText: 'Password',
                             hintStyle: const TextStyle(color: Colors.black),
                             border: const OutlineInputBorder(),
@@ -152,7 +173,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      //-------------------IT WILL TAKE THE PHONE NUMBER--<<<<<<<<
+                      //-----------------IT WILL TAKE THE PHONE NUMBER--<<<<<<<<
                       Container(
                         width: formWidth,
                         height: formHeight,
@@ -167,8 +188,8 @@ class _HomeState extends State<Home> {
                             return '';
                           },
                           decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.phone),
                             hintText: 'Phone Number',
-                            // icon: Icon(Icons.phone),
                             hintStyle: TextStyle(color: Colors.black),
                             border: OutlineInputBorder(),
                           ),
@@ -185,10 +206,14 @@ class _HomeState extends State<Home> {
                           },
                           child: Text(
                             "Register",
-                            style: TextStyle(fontSize: dHeight * 0.04),
+                            style: TextStyle(
+                              fontSize: dHeight * 0.04,
+                              color: Colors.blueGrey[50],
+                            ),
                           ),
                         ),
                       ),
+                      //ROW CONTAINING LOGIN BUTTON
                       Padding(
                         padding: EdgeInsets.only(
                           top: dHeight * 0.01,
@@ -197,63 +222,99 @@ class _HomeState extends State<Home> {
                         child: Row(
                           children: <Widget>[
                             //CHILD - 1 TEXT
-                            const Text("I already have an account!"),
+                            const Text(
+                              "I already have an account!",
+                              style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w700),
+                            ),
                             //CHILD - 2 SIZEDBOX
                             const SizedBox(
                               width: 10,
                             ),
                             //CHILD - 3 LOGIN BUTTON
                             GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/login');
+                              },
                               child: Text(
                                 "Login",
                                 style: TextStyle(
-                                  color: Colors.blue[900],
-                                  fontSize: dHeight * 0.04,
-                                ),
+                                    color: Colors.black,
+                                    fontSize: dHeight * 0.04,
+                                    fontFamily: 'BalooBhaijaan2',
+                                    fontWeight: FontWeight.w900),
                               ),
                             ),
                           ],
                         ),
                       ),
+                      FloatingActionButton(
+                        child: Icon(
+                          Icons.navigate_next_rounded,
+                          size: 32,
+                        ),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/authLogin'),
+                      ),
                     ],
                   ),
                 ),
               ),
+            ),
 
-              //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
-              //
-              Material(
-                elevation: 20,
-                //This container will act as an appbar
-                child: Container(
-                  color: Colors.blueGrey[900],
-                  height: dHeight * 0.2,
-                  width: dWidth,
-                  child: AnimatedPositioned(
-                    duration: const Duration(seconds: 5),
-                    curve: Curves.fastOutSlowIn,
-                    child: Center(
-                      child: SizedBox(
-                        width: dWidth * 0.80,
-                        child: FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: Text(
-                            "Welcome to MyMart",
-                            style: colorizeTextStyle,
+            //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP--------------->>>>
+            //
+            Material(
+              elevation: 20,
+              //This container will act as an appbar
+              child: Container(
+                color: Colors.blue[800],
+                height: dHeight * 0.2,
+                width: dWidth,
+                child: Stack(
+                  children: [
+                    AnimatedPositioned(
+                      duration: const Duration(seconds: 5),
+                      curve: Curves.fastOutSlowIn,
+                      child: Center(
+                        child: SizedBox(
+                          width: dWidth * 0.80,
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    'assets/images/appstore.png',
+                                    width: dHeight * 0.075,
+                                    height: dHeight * 0.075,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: dHeight * 0.04,
+                                ),
+                                Text(
+                                  "Welcome to MyMart",
+                                  style: colorizeTextStyle,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
+                      top: selected ? dHeight * .08 : dHeight * .5,
+                      left: dWidth * 0.1,
                     ),
-                    top: selected ? dHeight * .08 : dHeight * .5,
-                    left: dWidth * 0.1,
-                  ),
+                  ],
                 ),
               ),
-              //
-              //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP----------------->>>>
-              //
-            ],
-          ),
+            ),
+            //
+            //ANIMATED TEXT WHICH WILL TAKE TEXT TO THE TOP-------------->>>>
+            //
+          ],
         ),
       ),
     );
