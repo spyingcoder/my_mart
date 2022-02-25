@@ -40,16 +40,6 @@ class _HomeState extends State<Home> {
     }
   }
 
-  bool selected = false;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      selected = !selected;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     double dWidth = MyUtility(context).width;
@@ -301,7 +291,7 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(
                     top: dHeight * 0.02,
                     left: dHeight * 0.05,
-                    bottom: dHeight * 0.05,
+                    // bottom: dHeight * 0.05,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -341,8 +331,9 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 //FORGET PASSWORD FIELD------------------------------->
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: formHeight * 0.2),
+                Container(
+                  height: formHeight,
+                  margin: EdgeInsets.symmetric(vertical: formHeight * 0.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, '/login');
@@ -350,8 +341,8 @@ class _HomeState extends State<Home> {
                     child: Text(
                       "Forget Password?",
                       style: TextStyle(
-                        color: Colors.blue[300],
-                        fontSize: dHeight * 0.04,
+                        color: Colors.blue[700],
+                        fontSize: dHeight * 0.02,
                         fontFamily: 'BalooBhaijaan2',
                       ),
                     ),
@@ -430,4 +421,5 @@ class _HomeState extends State<Home> {
       ],
     );
   }
+//
 }

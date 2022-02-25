@@ -11,12 +11,9 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
-  bool selected = false;
-
   @override
   void initState() {
     super.initState();
-    // selected = true;
     Timer(const Duration(seconds: 3), () {
       Navigator.pop(context);
       Navigator.pushNamed(context, '/home');
