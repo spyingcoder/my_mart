@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_mart/data/login_controller.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_mart/shared/util.dart';
 
 class AuthLogin extends StatefulWidget {
@@ -19,6 +19,7 @@ class _AuthLoginState extends State<AuthLogin> {
     double dHeight = MyUtility(context).height;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,10 +33,6 @@ class _AuthLoginState extends State<AuthLogin> {
             }),
             SizedBox(
               height: 32,
-            ),
-            FloatingActionButton(
-              child: Icon(Icons.navigate_before_outlined),
-              onPressed: () => Navigator.pushNamed(context, '/home'),
             ),
           ],
         ),
@@ -66,11 +63,20 @@ class _AuthLoginState extends State<AuthLogin> {
           height: 16,
         ),
         ActionChip(
-          label: const Text("Logout"),
+          shape: StadiumBorder(
+            side: BorderSide(width: 3),
+          ),
+          elevation: 3,
+          backgroundColor: Colors.white,
+          label: const Text("Logout",
+              style: TextStyle(
+                fontFamily: 'BalooBhaijaan2',
+                fontWeight: FontWeight.w700,
+              )),
           onPressed: () {
             controller.logout();
           },
-          avatar: Icon(Icons.logout),
+          avatar: Icon(Icons.power_settings_new_sharp),
         )
       ],
     );

@@ -5,6 +5,7 @@ import 'package:my_mart/screens/home.dart';
 import 'package:my_mart/screens/intro_screen.dart';
 import 'package:my_mart/screens/login.dart';
 import 'package:flutter/services.dart';
+import 'package:my_mart/shared/colors.dart';
 
 void main() => runApp(const Main());
 
@@ -18,6 +19,7 @@ class Main extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return GetMaterialApp(
+      title: 'MyMart',
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => const Intro(),
@@ -25,24 +27,18 @@ class Main extends StatelessWidget {
         '/login': (context) => const Login(),
         '/authLogin': (context) => const AuthLogin(),
       },
-      //PERMANENT----->>>>
       initialRoute: '/',
-      //TEST---------->>>>
-      // initialRoute: '/login',
       theme: ThemeData(
-        fontFamily: 'SupermercadoOne',
-        scaffoldBackgroundColor: Colors.blue[800], //DARK MODE
-        //scaffoldBackgroundColor: Colors.blueGrey[100],  //LIGHT MODE
+        // fontFamily: 'SupermercadoOne',
+        scaffoldBackgroundColor: Colors.red[50],
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(
-              side: BorderSide(width: 3),
-            ),
-            elevation: 1,
-            primary: Colors.blue[800],
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: const BorderSide(color: Colors.red)),
+            primary: LightTheme.elevatedButton,
             textStyle: const TextStyle(
               fontFamily: 'Rowdies',
-              // fontWeight: FontWeight.w800,
             ),
           ),
         ),

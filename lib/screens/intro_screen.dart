@@ -17,7 +17,7 @@ class _IntroState extends State<Intro> {
   void initState() {
     super.initState();
     // selected = true;
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pop(context);
       Navigator.pushNamed(context, '/home');
     });
@@ -40,6 +40,7 @@ class _IntroState extends State<Intro> {
     );
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,24 +52,13 @@ class _IntroState extends State<Intro> {
                 child: AnimatedTextKit(
                   animatedTexts: [
                     ColorizeAnimatedText(
-                      'Welcome to MyMart',
+                      'MyMart',
                       textStyle: colorizeTextStyle,
                       colors: colorizeColors,
                     ),
                   ],
                   isRepeatingAnimation: false,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/images/appstore.png',
-                width: 80,
-                height: 80,
               ),
             ),
           ],
