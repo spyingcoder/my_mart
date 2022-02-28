@@ -178,6 +178,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                //
                 //-------------------IT WILL TAKE THE EMAIL-------<<<<<<<<
                 Container(
                   width: formWidth,
@@ -205,6 +206,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                //
                 //------------------IT WILL TAKE THE PASSWORD-----<<<<<<<<
                 Container(
                   width: formWidth,
@@ -247,6 +249,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                //
                 //-----------------IT WILL TAKE THE PHONE NUMBER--<<<<<<<<
                 Container(
                   width: formWidth,
@@ -275,6 +278,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                //
                 //-------------------BUTTON FOR REGISTER-------<<<<<<<<
                 Container(
                   margin: EdgeInsets.only(top: dHeight * 0.02),
@@ -294,8 +298,8 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-
-                //ROW CONTAINING LOGIN BUTTON------------------->>>>>>>>
+                //
+                //RICHTEXT CONTAINING LOGIN GESTURE------------------->>>>>>>>
                 Padding(
                   padding: EdgeInsets.only(top: dHeight * 0.02),
                   child: RichText(
@@ -309,7 +313,7 @@ class _HomeState extends State<Home> {
                       text: 'Already have an account!\t',
                       children: <TextSpan>[
                         TextSpan(
-                            text: 'Login',
+                            text: '\tLogin',
                             style: TextStyle(
                               color: Colors.blue[800],
                               fontSize: dHeight * 0.03,
@@ -324,9 +328,8 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-
+                //
                 //FORGET PASSWORD FIELD------------------------------->
-
                 Container(
                   height: formHeight,
                   margin: EdgeInsets.symmetric(vertical: formHeight * 0.0),
@@ -344,6 +347,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                //
               ],
             ),
           ),
@@ -358,8 +362,8 @@ class _HomeState extends State<Home> {
       onPressed: () {
         controller.login();
       },
-      icon: Image.network(
-        'https://pngimg.com/uploads/google/google_PNG19630.png',
+      icon: Image.asset(
+        'assets/images/google_logo.png',
         width: 32,
         height: 32,
       ),
@@ -374,7 +378,7 @@ class _HomeState extends State<Home> {
       foregroundColor: Colors.black,
     );
   }
-
+//
 //WIDGET THAT WILL APPLY AFTER LOGIN----------------------------->
   Column buildProfileView() {
     return Column(

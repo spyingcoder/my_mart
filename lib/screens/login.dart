@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:my_mart/data/login_controller.dart';
 import 'package:my_mart/shared/colors.dart';
@@ -60,6 +61,7 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                //
                 //-------------------LOGO OF MART---------<<<<<<<<
                 Padding(
                   padding: EdgeInsets.only(
@@ -116,6 +118,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                //
                 //------------------IT WILL TAKE THE PASSWORD-----<<<<<<<<
                 Container(
                   width: formWidth,
@@ -158,7 +161,8 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                //-------------------BUTTON FOR REGISTER-------<<<<<<<<
+                //
+                //-------------------BUTTON FOR LOGIN-------<<<<<<<<
                 Container(
                   margin: EdgeInsets.only(top: dHeight * 0.02),
                   padding: EdgeInsets.only(top: dHeight * 0.01),
@@ -177,54 +181,40 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                //ROW CONTAINING LOGIN BUTTON
+                //
+                //RICHTEXT CONTAINING REGISTER GESTURE------------------->>>>>>>>
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: dHeight * 0.02,
-                    left: dHeight * 0.05,
-                    // bottom: dHeight * 0.05,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      //CHILD - 1 TEXT
-                      Text(
-                        "Not have an account!",
-                        style: TextStyle(
-                            fontSize: dHeight * 0.025,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w700),
+                  padding: EdgeInsets.only(top: dHeight * 0.02),
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: dHeight * 0.02,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w700,
                       ),
-                      //CHILD - 2 SIZEDBOX
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      //CHILD - 3 LOGIN BUTTON
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/home');
-                          },
-                          child: Text(
-                            "Register",
+                      text: 'Not have an account!\t',
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: '\tRegister',
                             style: TextStyle(
-                                color: Colors.blue[800],
-                                fontSize: dHeight * 0.04,
-                                fontFamily: 'BalooBhaijaan2',
-                                fontWeight: FontWeight.w900),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                    ],
+                              color: Colors.blue[800],
+                              fontSize: dHeight * 0.03,
+                              fontFamily: 'BalooBhaijaan2',
+                              fontWeight: FontWeight.w900,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.pushNamed(context, '/login');
+                              }),
+                      ],
+                    ),
                   ),
                 ),
+                //
                 //FORGET PASSWORD FIELD------------------------------->
                 Container(
-                  height: formHeight,
-                  
+                  height: formHeight * 0.5,
                   margin: EdgeInsets.symmetric(vertical: formHeight * 0.0),
                   child: GestureDetector(
                     onTap: () {
@@ -241,7 +231,6 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 //
-
                 //DOUBLE HORIZONTAL BARS WITH "OR" TEXT
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -280,6 +269,7 @@ class _LoginState extends State<Login> {
                     ),
                   ],
                 ),
+                //
                 //GOOGLE SIGN IN AUTHENTICATION BUTTON--------------->>>
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: formHeight * 0.3),
@@ -307,14 +297,14 @@ class _LoginState extends State<Login> {
     );
   }
 
-  //GOOLE SIGN IN BUTTON------------------------------->>>>>>>>>
+  //GOOGLE SIGN IN BUTTON------------------------------->>>>>>>>>
   FloatingActionButton buildLoginButton() {
     return FloatingActionButton.extended(
       onPressed: () {
         controller.login();
       },
-      icon: Image.network(
-        'https://pngimg.com/uploads/google/google_PNG19630.png',
+      icon: Image.asset(
+        'assets/images/google_logo.png',
         width: 32,
         height: 32,
       ),
