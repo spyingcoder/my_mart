@@ -18,6 +18,7 @@ class Main extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return GetMaterialApp(
       title: 'MyMart',
       debugShowCheckedModeBanner: false,
@@ -34,8 +35,9 @@ class Main extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: const BorderSide(color: Colors.red)),
+              borderRadius: BorderRadius.circular(18.0),
+              side: const BorderSide(color: Colors.red),
+            ),
             primary: LightTheme.elevatedButton,
             textStyle: const TextStyle(
               fontFamily: 'Rowdies',

@@ -1,9 +1,12 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:my_mart/shared/colors.dart';
 import 'package:my_mart/shared/util.dart';
 import 'package:get/get.dart';
 import 'package:my_mart/data/login_controller.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -27,10 +30,43 @@ bool obscureText = true;
 //EMAIL VERIFICATION IN DART ------------------------------------------------->>
 
 class _HomeState extends State<Home> {
+
+  StreamSubscription internetconnection;
+  bool isoffline = false;  //isoffline = false means inonline
+  //set variable for Connectivity subscription listner
+
+
+
   @override
   void initState() {
+    internetconnection = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+      // when every connection status is changed.
+      if(result == ConnectivityResult.none){
+        //there is no any connection
+        setState(() {
+          isoffline = true;
+        });
+      }else if(result == ConnectivityResult.mobile){
+        //connection is mobile data network
+        setState(() {
+          isoffline = false;
+        });
+      }else if(result == ConnectivityResult.wifi){
+        //connection is from wifi
+        setState(() {
+          isoffline = false;
+        });
+      }
+    }); // using this listner, you can get the medium of connection as well.
+
     super.initState();
-    print("State Initiated");
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    internetconnection.cancel();
+    //cancel internent connection subscription after you are done
   }
 
   //
@@ -60,11 +96,18 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
+            //
             //COLUMN THAT CONTAIN WHOLE BODY/PAGE----------------->>>>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                //
+                Container(
+                  child: errmsg("No Internet Connection Available", isoffline),
+                  //to show internet connection message on isoffline = true.
+                ),
+                //
                 //-------------------LOGO OF MART---------<<<<<<<<
                 Padding(
                   padding: EdgeInsets.only(
@@ -354,6 +397,32 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+//ERROR MESSAGE WHICH WILL APPEAR --------------------------------->>>>
+  Widget errmsg(String text,bool show){
+    //error message widget.
+    if(show == true){
+      //if error is true then show error message box
+      return Container(
+        padding: EdgeInsets.all(10.00),
+        margin: EdgeInsets.only(bottom: 10.00),
+        color: Colors.red,
+        child: Row(children: [
+
+          Container(
+            margin: EdgeInsets.only(right:6.00),
+            child: Icon(Icons.info, color: Colors.white),
+          ), // icon for error message
+
+          Text(text, style: TextStyle(color: Colors.white)),
+          //show error message text
+        ]),
+      );
+    }else{
+      return Container();
+      //if error is false, return empty container.
+    }
   }
 
 //GOOGLE SIGN IN BUTTON------------------------------->>>>>>>>>
